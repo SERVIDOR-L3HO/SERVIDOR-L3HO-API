@@ -1,0 +1,284 @@
+================================================================================
+  MULTI-LEAGUE FOOTBALL API - LISTA COMPLETA DE ENDPOINTS
+  Versión: 3.4.0
+  Contacto: servidorl3ho@gmail.com
+  © 2025 L3HO. Todos los derechos reservados.
+================================================================================
+
+IMPORTANTE: 
+- Todos los endpoints de datos requieren autenticación con API key
+- Usa header "X-API-Key: tu_api_key" o query parameter "?apikey=tu_api_key"
+- Los endpoints públicos (sin API key): /, /api/docs, /admin/*
+
+================================================================================
+ENDPOINTS PÚBLICOS (No requieren API key)
+================================================================================
+
+GET  /                          Página principal con documentación HTML
+GET  /api/docs                  Documentación de la API en formato JSON
+
+
+================================================================================
+ENDPOINTS DE ADMINISTRACIÓN (Requieren contraseña de admin)
+================================================================================
+
+POST /admin/create-key          Crear nueva API key
+     Body: {
+       "adminPassword": "tu_password",
+       "clientName": "Nombre del Cliente",
+       "description": "Descripción opcional"
+     }
+
+GET  /admin/keys                Ver todas las API keys y estadísticas
+     Query: ?adminPassword=tu_password
+
+POST /admin/deactivate-key      Desactivar una API key
+     Body: {
+       "adminPassword": "tu_password",
+       "apiKey": "lmx_..."
+     }
+
+GET  /admin/stats               Ver estadísticas del sistema
+     Query: ?adminPassword=tu_password
+
+
+================================================================================
+LIGA MX - ENDPOINTS
+================================================================================
+
+GET  /tabla                     Tabla de posiciones
+GET  /noticias                  Últimas noticias
+GET  /goleadores                Máximos goleadores
+GET  /equipos                   Información de equipos
+GET  /logos                     Logos de equipos
+GET  /videos                    Videos de YouTube
+GET  /calendario                Calendario de partidos
+GET  /marcadores                Marcadores en vivo (Tiempo Real)
+     Query opcional: ?date=YYYYMMDD (Ej: ?date=20251115)
+GET  /alineaciones              Alineaciones con fotos (Multi-fuente)
+GET  /todo                      Todos los datos combinados
+
+
+================================================================================
+PREMIER LEAGUE - ENDPOINTS
+================================================================================
+
+GET  /premier/tabla             Tabla de posiciones
+GET  /premier/noticias          Últimas noticias
+GET  /premier/goleadores        Máximos goleadores
+GET  /premier/calendario        Calendario de partidos
+GET  /premier/marcadores        Marcadores en vivo (Tiempo Real)
+     Query opcional: ?date=YYYYMMDD
+GET  /premier/alineaciones      Alineaciones
+GET  /premier/mejores-momentos  Mejores momentos
+
+
+================================================================================
+LA LIGA - ENDPOINTS
+================================================================================
+
+GET  /laliga/tabla              Tabla de posiciones
+GET  /laliga/noticias           Últimas noticias
+GET  /laliga/goleadores         Máximos goleadores
+GET  /laliga/calendario         Calendario de partidos
+GET  /laliga/marcadores         Marcadores en vivo (Tiempo Real)
+     Query opcional: ?date=YYYYMMDD
+GET  /laliga/alineaciones       Alineaciones
+GET  /laliga/mejores-momentos   Mejores momentos
+
+
+================================================================================
+SERIE A - ENDPOINTS
+================================================================================
+
+GET  /seriea/tabla              Tabla de posiciones
+GET  /seriea/noticias           Últimas noticias
+GET  /seriea/goleadores         Máximos goleadores
+GET  /seriea/calendario         Calendario de partidos
+GET  /seriea/marcadores         Marcadores en vivo (Tiempo Real)
+     Query opcional: ?date=YYYYMMDD
+GET  /seriea/alineaciones       Alineaciones
+GET  /seriea/mejores-momentos   Mejores momentos
+
+
+================================================================================
+BUNDESLIGA - ENDPOINTS
+================================================================================
+
+GET  /bundesliga/tabla          Tabla de posiciones
+GET  /bundesliga/noticias       Últimas noticias
+GET  /bundesliga/goleadores     Máximos goleadores
+GET  /bundesliga/calendario     Calendario de partidos
+GET  /bundesliga/marcadores     Marcadores en vivo (Tiempo Real)
+     Query opcional: ?date=YYYYMMDD
+GET  /bundesliga/alineaciones   Alineaciones
+GET  /bundesliga/mejores-momentos  Mejores momentos
+
+
+================================================================================
+LIGUE 1 - ENDPOINTS
+================================================================================
+
+GET  /ligue1/tabla              Tabla de posiciones
+GET  /ligue1/noticias           Últimas noticias
+GET  /ligue1/goleadores         Máximos goleadores
+GET  /ligue1/calendario         Calendario de partidos
+GET  /ligue1/marcadores         Marcadores en vivo (Tiempo Real)
+     Query opcional: ?date=YYYYMMDD
+GET  /ligue1/alineaciones       Alineaciones
+GET  /ligue1/mejores-momentos   Mejores momentos
+
+
+================================================================================
+ENDPOINTS ESPECIALES - TODAS LAS LIGAS
+================================================================================
+
+GET  /calendario/todas-las-ligas     Calendario completo de todas las ligas
+GET  /marcadores/todas-las-ligas     Marcadores de todas las ligas
+     Query opcional: ?date=YYYYMMDD
+GET  /alineaciones/todas-las-ligas   Alineaciones completas multi-fuente
+
+
+================================================================================
+ENDPOINTS ESPECIALES - ALINEACIONES
+================================================================================
+
+GET  /alineaciones/partido/:eventId  Alineación de un partido específico
+     Ejemplo: /alineaciones/partido/12345
+     Incluye: fotos de jugadores, posiciones, números de camiseta,
+              formación táctica, titulares y suplentes
+
+GET  /alineaciones/stats             Métricas y estadísticas del sistema
+     Incluye: Cache hit rate, tasa de enriquecimiento de fotos,
+              fuentes de datos utilizadas
+
+
+================================================================================
+ENDPOINTS ESPECIALES - NOTIFICACIONES
+================================================================================
+
+GET  /notificaciones                 Todas las notificaciones
+     Sistema inteligente que detecta:
+     - GOLES en tiempo real ⚽
+     - INICIO DE PARTIDO 🏁
+     - FIN DEL PRIMER TIEMPO ⏸️
+     - Inicio del segundo tiempo
+     - Partidos en vivo
+     - Partidos próximos (15min, 30min, 1h, 2h)
+     - Partidos del día
+
+GET  /notificaciones/:liga           Notificaciones por liga específica
+     Ligas disponibles: ligamx, premier, laliga, seriea, bundesliga, ligue1
+
+GET  /notificaciones/stats           Estadísticas del sistema de notificaciones
+
+
+================================================================================
+ENDPOINTS ESPECIALES - TRANSMISIONES
+================================================================================
+
+GET  /transmisiones                  Transmisiones deportivas en vivo
+     Incluye: fechas, horarios y canales disponibles
+
+GET  /transmisiones2                 Transmisiones completas de todos los deportes
+     Deportes: SOCCER, BASKETBALL, HOCKEY, TENNIS, VOLLEYBALL, etc.
+     Fuente: dp.mycraft.click
+
+GET  /transmisiones3                 Transmisiones alternativas
+     Deportes: HOCKEY, FOOTBALL/SOCCER, BASKETBALL, AMERICAN FOOTBALL, MOTORSPORT
+     Fuente: e1link.link
+     Incluye: canal, ID y enlaces directos
+
+
+================================================================================
+ENDPOINTS ESPECIALES - STREAMING Y PROXY
+================================================================================
+
+GET  /getStreamUrl                   Extrae URL del reproductor de video
+     Query: ?url=https://rereyano.ru/player/3/1
+     Respuesta: { success: true, playerUrl: 'https://...', type: 'iframe' }
+     Descripción: Obtiene la URL del reproductor en formato JSON
+
+GET  /proxyStream                    Proxy limpiador de HTML para streams
+     Query: ?url=https://rereyano.ru/player/3/1
+     Descripción: Elimina anuncios y pop-ups, extrae solo el reproductor
+
+
+================================================================================
+EJEMPLOS DE USO
+================================================================================
+
+1. USANDO HEADER (Recomendado):
+   
+   curl -H "X-API-Key: lmx_tu_api_key_aqui" https://tu-dominio.com/tabla
+
+
+2. USANDO QUERY PARAMETER:
+   
+   curl https://tu-dominio.com/tabla?apikey=lmx_tu_api_key_aqui
+
+
+3. JAVASCRIPT/FETCH:
+   
+   fetch('https://tu-dominio.com/tabla', {
+     headers: {
+       'X-API-Key': 'lmx_tu_api_key_aqui'
+     }
+   })
+   .then(response => response.json())
+   .then(data => console.log(data));
+
+
+4. PYTHON/REQUESTS:
+   
+   import requests
+   headers = {'X-API-Key': 'lmx_tu_api_key_aqui'}
+   response = requests.get('https://tu-dominio.com/tabla', headers=headers)
+   data = response.json()
+
+
+================================================================================
+INFORMACIÓN TÉCNICA
+================================================================================
+
+- Puerto:                5000
+- Formato de respuesta:  JSON
+- CORS:                  Habilitado
+- Actualización:         Automática cada 20 minutos
+- Caché:                 Sistema inteligente de caché
+- Métodos aceptados:     GET, POST
+- Estado:                ✅ Activo
+
+
+================================================================================
+SOPORTE Y CONTACTO
+================================================================================
+
+Email:    servidorl3ho@gmail.com
+Panel:    /admin.html (Panel de administración)
+Docs:     / (Documentación HTML interactiva)
+
+Para obtener una API key o soporte técnico, contacte por email.
+
+
+================================================================================
+TOTAL DE ENDPOINTS
+================================================================================
+
+- Endpoints públicos:     2
+- Endpoints de admin:     4
+- Liga MX:               10
+- Premier League:         7
+- La Liga:                7
+- Serie A:                7
+- Bundesliga:             7
+- Ligue 1:                7
+- Multi-liga:             3
+- Alineaciones:           2
+- Notificaciones:         3
+- Transmisiones:          3
+- Streaming/Proxy:        2
+
+TOTAL:                   64 endpoints
+
+================================================================================
