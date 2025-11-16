@@ -433,7 +433,7 @@ app.get("/tabla", authMiddleware, async (req, res) => {
   }
 });
 
-app.get("/noticias", authMiddleware, async (req, res) => {
+app.get("/noticias", async (req, res) => {
   try {
     let data = cache.get("noticias");
     
@@ -453,7 +453,7 @@ app.get("/noticias", authMiddleware, async (req, res) => {
   }
 });
 
-app.get("/goleadores", authMiddleware, async (req, res) => {
+app.get("/goleadores", async (req, res) => {
   try {
     let data = cache.get("goleadores");
     
@@ -473,7 +473,7 @@ app.get("/goleadores", authMiddleware, async (req, res) => {
   }
 });
 
-app.get("/equipos", authMiddleware, async (req, res) => {
+app.get("/equipos", async (req, res) => {
   try {
     let data = cache.get("equipos");
     
@@ -493,7 +493,7 @@ app.get("/equipos", authMiddleware, async (req, res) => {
   }
 });
 
-app.get("/logos", authMiddleware, async (req, res) => {
+app.get("/logos", async (req, res) => {
   try {
     let data = cache.get("logos");
     
@@ -513,7 +513,7 @@ app.get("/logos", authMiddleware, async (req, res) => {
   }
 });
 
-app.get("/videos", authMiddleware, async (req, res) => {
+app.get("/videos", async (req, res) => {
   try {
     let data = cache.get("videos");
     
@@ -533,7 +533,7 @@ app.get("/videos", authMiddleware, async (req, res) => {
   }
 });
 
-app.get("/calendario", authMiddleware, async (req, res) => {
+app.get("/calendario", async (req, res) => {
   try {
     let data = cache.get("calendario");
     
@@ -553,7 +553,7 @@ app.get("/calendario", authMiddleware, async (req, res) => {
   }
 });
 
-app.get("/todo", authMiddleware, async (req, res) => {
+app.get("/todo", async (req, res) => {
   try {
     const tabla = cache.get("tabla") || await scrapTabla().catch(() => null);
     const noticias = cache.get("noticias") || await scrapNoticias().catch(() => null);
@@ -582,7 +582,7 @@ app.get("/todo", authMiddleware, async (req, res) => {
   }
 });
 
-app.get("/premier/tabla", authMiddleware, async (req, res) => {
+app.get("/premier/tabla", async (req, res) => {
   try {
     let data = cache.get("premier_tabla");
     if (!data) {
@@ -597,7 +597,7 @@ app.get("/premier/tabla", authMiddleware, async (req, res) => {
   }
 });
 
-app.get("/premier/noticias", authMiddleware, async (req, res) => {
+app.get("/premier/noticias", async (req, res) => {
   try {
     let data = cache.get("premier_noticias");
     if (!data) {
@@ -612,7 +612,7 @@ app.get("/premier/noticias", authMiddleware, async (req, res) => {
   }
 });
 
-app.get("/premier/goleadores", authMiddleware, async (req, res) => {
+app.get("/premier/goleadores", async (req, res) => {
   try {
     let data = cache.get("premier_goleadores");
     if (!data) {
@@ -627,7 +627,7 @@ app.get("/premier/goleadores", authMiddleware, async (req, res) => {
   }
 });
 
-app.get("/premier/calendario", authMiddleware, async (req, res) => {
+app.get("/premier/calendario", async (req, res) => {
   try {
     let data = cache.get("premier_calendario");
     if (!data) {
@@ -642,7 +642,7 @@ app.get("/premier/calendario", authMiddleware, async (req, res) => {
   }
 });
 
-app.get("/premier/mejores-momentos", authMiddleware, async (req, res) => {
+app.get("/premier/mejores-momentos", async (req, res) => {
   try {
     let data = cache.get("premier_mejores_momentos");
     if (!data) {
@@ -657,7 +657,7 @@ app.get("/premier/mejores-momentos", authMiddleware, async (req, res) => {
   }
 });
 
-app.get("/laliga/tabla", authMiddleware, async (req, res) => {
+app.get("/laliga/tabla", async (req, res) => {
   try {
     let data = cache.get("laliga_tabla");
     if (!data) {
@@ -672,7 +672,7 @@ app.get("/laliga/tabla", authMiddleware, async (req, res) => {
   }
 });
 
-app.get("/laliga/noticias", authMiddleware, async (req, res) => {
+app.get("/laliga/noticias", async (req, res) => {
   try {
     let data = cache.get("laliga_noticias");
     if (!data) {
@@ -687,7 +687,7 @@ app.get("/laliga/noticias", authMiddleware, async (req, res) => {
   }
 });
 
-app.get("/laliga/goleadores", authMiddleware, async (req, res) => {
+app.get("/laliga/goleadores", async (req, res) => {
   try {
     let data = cache.get("laliga_goleadores");
     if (!data) {
@@ -702,7 +702,7 @@ app.get("/laliga/goleadores", authMiddleware, async (req, res) => {
   }
 });
 
-app.get("/laliga/calendario", authMiddleware, async (req, res) => {
+app.get("/laliga/calendario", async (req, res) => {
   try {
     let data = cache.get("laliga_calendario");
     if (!data) {
@@ -717,7 +717,7 @@ app.get("/laliga/calendario", authMiddleware, async (req, res) => {
   }
 });
 
-app.get("/laliga/mejores-momentos", authMiddleware, async (req, res) => {
+app.get("/laliga/mejores-momentos", async (req, res) => {
   try {
     let data = cache.get("laliga_mejores_momentos");
     if (!data) {
@@ -732,7 +732,7 @@ app.get("/laliga/mejores-momentos", authMiddleware, async (req, res) => {
   }
 });
 
-app.get("/seriea/tabla", authMiddleware, async (req, res) => {
+app.get("/seriea/tabla", async (req, res) => {
   try {
     let data = cache.get("seriea_tabla");
     if (!data) {
@@ -747,7 +747,7 @@ app.get("/seriea/tabla", authMiddleware, async (req, res) => {
   }
 });
 
-app.get("/seriea/noticias", authMiddleware, async (req, res) => {
+app.get("/seriea/noticias", async (req, res) => {
   try {
     let data = cache.get("seriea_noticias");
     if (!data) {
@@ -762,7 +762,7 @@ app.get("/seriea/noticias", authMiddleware, async (req, res) => {
   }
 });
 
-app.get("/seriea/goleadores", authMiddleware, async (req, res) => {
+app.get("/seriea/goleadores", async (req, res) => {
   try {
     let data = cache.get("seriea_goleadores");
     if (!data) {
@@ -777,7 +777,7 @@ app.get("/seriea/goleadores", authMiddleware, async (req, res) => {
   }
 });
 
-app.get("/seriea/calendario", authMiddleware, async (req, res) => {
+app.get("/seriea/calendario", async (req, res) => {
   try {
     let data = cache.get("seriea_calendario");
     if (!data) {
@@ -792,7 +792,7 @@ app.get("/seriea/calendario", authMiddleware, async (req, res) => {
   }
 });
 
-app.get("/seriea/mejores-momentos", authMiddleware, async (req, res) => {
+app.get("/seriea/mejores-momentos", async (req, res) => {
   try {
     let data = cache.get("seriea_mejores_momentos");
     if (!data) {
@@ -807,7 +807,7 @@ app.get("/seriea/mejores-momentos", authMiddleware, async (req, res) => {
   }
 });
 
-app.get("/bundesliga/tabla", authMiddleware, async (req, res) => {
+app.get("/bundesliga/tabla", async (req, res) => {
   try {
     let data = cache.get("bundesliga_tabla");
     if (!data) {
@@ -822,7 +822,7 @@ app.get("/bundesliga/tabla", authMiddleware, async (req, res) => {
   }
 });
 
-app.get("/bundesliga/noticias", authMiddleware, async (req, res) => {
+app.get("/bundesliga/noticias", async (req, res) => {
   try {
     let data = cache.get("bundesliga_noticias");
     if (!data) {
@@ -837,7 +837,7 @@ app.get("/bundesliga/noticias", authMiddleware, async (req, res) => {
   }
 });
 
-app.get("/bundesliga/goleadores", authMiddleware, async (req, res) => {
+app.get("/bundesliga/goleadores", async (req, res) => {
   try {
     let data = cache.get("bundesliga_goleadores");
     if (!data) {
@@ -852,7 +852,7 @@ app.get("/bundesliga/goleadores", authMiddleware, async (req, res) => {
   }
 });
 
-app.get("/bundesliga/calendario", authMiddleware, async (req, res) => {
+app.get("/bundesliga/calendario", async (req, res) => {
   try {
     let data = cache.get("bundesliga_calendario");
     if (!data) {
@@ -867,7 +867,7 @@ app.get("/bundesliga/calendario", authMiddleware, async (req, res) => {
   }
 });
 
-app.get("/bundesliga/mejores-momentos", authMiddleware, async (req, res) => {
+app.get("/bundesliga/mejores-momentos", async (req, res) => {
   try {
     let data = cache.get("bundesliga_mejores_momentos");
     if (!data) {
@@ -882,7 +882,7 @@ app.get("/bundesliga/mejores-momentos", authMiddleware, async (req, res) => {
   }
 });
 
-app.get("/ligue1/tabla", authMiddleware, async (req, res) => {
+app.get("/ligue1/tabla", async (req, res) => {
   try {
     let data = cache.get("ligue1_tabla");
     if (!data) {
@@ -897,7 +897,7 @@ app.get("/ligue1/tabla", authMiddleware, async (req, res) => {
   }
 });
 
-app.get("/ligue1/noticias", authMiddleware, async (req, res) => {
+app.get("/ligue1/noticias", async (req, res) => {
   try {
     let data = cache.get("ligue1_noticias");
     if (!data) {
@@ -912,7 +912,7 @@ app.get("/ligue1/noticias", authMiddleware, async (req, res) => {
   }
 });
 
-app.get("/ligue1/goleadores", authMiddleware, async (req, res) => {
+app.get("/ligue1/goleadores", async (req, res) => {
   try {
     let data = cache.get("ligue1_goleadores");
     if (!data) {
@@ -927,7 +927,7 @@ app.get("/ligue1/goleadores", authMiddleware, async (req, res) => {
   }
 });
 
-app.get("/ligue1/calendario", authMiddleware, async (req, res) => {
+app.get("/ligue1/calendario", async (req, res) => {
   try {
     let data = cache.get("ligue1_calendario");
     if (!data) {
@@ -942,7 +942,7 @@ app.get("/ligue1/calendario", authMiddleware, async (req, res) => {
   }
 });
 
-app.get("/ligue1/mejores-momentos", authMiddleware, async (req, res) => {
+app.get("/ligue1/mejores-momentos", async (req, res) => {
   try {
     let data = cache.get("ligue1_mejores_momentos");
     if (!data) {
@@ -957,7 +957,7 @@ app.get("/ligue1/mejores-momentos", authMiddleware, async (req, res) => {
   }
 });
 
-app.get("/calendario/todas-las-ligas", authMiddleware, async (req, res) => {
+app.get("/calendario/todas-las-ligas", async (req, res) => {
   try {
     console.log("🌍 Obteniendo calendarios de todas las ligas...");
     
@@ -1036,7 +1036,7 @@ app.get("/calendario/todas-las-ligas", authMiddleware, async (req, res) => {
   }
 });
 
-app.get("/transmisiones", authMiddleware, async (req, res) => {
+app.get("/transmisiones", async (req, res) => {
   try {
     let data = cache.get("transmisiones");
     
@@ -1056,7 +1056,7 @@ app.get("/transmisiones", authMiddleware, async (req, res) => {
   }
 });
 
-app.get("/transmisiones2", authMiddleware, async (req, res) => {
+app.get("/transmisiones2", async (req, res) => {
   try {
     let data = cache.get("transmisiones2");
     
@@ -1104,7 +1104,7 @@ app.get("/transmisiones2", authMiddleware, async (req, res) => {
   }
 });
 
-app.get("/transmisiones3", authMiddleware, async (req, res) => {
+app.get("/transmisiones3", async (req, res) => {
   try {
     let data = cache.get("transmisiones3");
     
@@ -1152,7 +1152,7 @@ app.get("/transmisiones3", authMiddleware, async (req, res) => {
   }
 });
 
-app.get("/marcadores", authMiddleware, async (req, res) => {
+app.get("/marcadores", async (req, res) => {
   try {
     const date = req.query.date || null;
     const data = await scrapMarcadoresLigaMX(date);
@@ -1166,7 +1166,7 @@ app.get("/marcadores", authMiddleware, async (req, res) => {
   }
 });
 
-app.get("/premier/marcadores", authMiddleware, async (req, res) => {
+app.get("/premier/marcadores", async (req, res) => {
   try {
     const date = req.query.date || null;
     const data = await scrapMarcadoresPremier(date);
@@ -1180,7 +1180,7 @@ app.get("/premier/marcadores", authMiddleware, async (req, res) => {
   }
 });
 
-app.get("/laliga/marcadores", authMiddleware, async (req, res) => {
+app.get("/laliga/marcadores", async (req, res) => {
   try {
     const date = req.query.date || null;
     const data = await scrapMarcadoresLaLiga(date);
@@ -1194,7 +1194,7 @@ app.get("/laliga/marcadores", authMiddleware, async (req, res) => {
   }
 });
 
-app.get("/seriea/marcadores", authMiddleware, async (req, res) => {
+app.get("/seriea/marcadores", async (req, res) => {
   try {
     const date = req.query.date || null;
     const data = await scrapMarcadoresSerieA(date);
@@ -1208,7 +1208,7 @@ app.get("/seriea/marcadores", authMiddleware, async (req, res) => {
   }
 });
 
-app.get("/bundesliga/marcadores", authMiddleware, async (req, res) => {
+app.get("/bundesliga/marcadores", async (req, res) => {
   try {
     const date = req.query.date || null;
     const data = await scrapMarcadoresBundesliga(date);
@@ -1222,7 +1222,7 @@ app.get("/bundesliga/marcadores", authMiddleware, async (req, res) => {
   }
 });
 
-app.get("/ligue1/marcadores", authMiddleware, async (req, res) => {
+app.get("/ligue1/marcadores", async (req, res) => {
   try {
     const date = req.query.date || null;
     const data = await scrapMarcadoresLigue1(date);
@@ -1236,7 +1236,7 @@ app.get("/ligue1/marcadores", authMiddleware, async (req, res) => {
   }
 });
 
-app.get("/marcadores/todas-las-ligas", authMiddleware, async (req, res) => {
+app.get("/marcadores/todas-las-ligas", async (req, res) => {
   try {
     const date = req.query.date || null;
     console.log("⚽ Obteniendo marcadores de todas las ligas...");
@@ -1317,7 +1317,7 @@ app.get("/marcadores/todas-las-ligas", authMiddleware, async (req, res) => {
   }
 });
 
-app.get("/alineaciones", authMiddleware, async (req, res) => {
+app.get("/alineaciones", async (req, res) => {
   try {
     const date = req.query.date || null;
     const cacheKey = `alineaciones_ligamx_${date || 'hoy'}`;
@@ -1339,7 +1339,7 @@ app.get("/alineaciones", authMiddleware, async (req, res) => {
   }
 });
 
-app.get("/premier/alineaciones", authMiddleware, async (req, res) => {
+app.get("/premier/alineaciones", async (req, res) => {
   try {
     const date = req.query.date || null;
     const data = await scrapAlineacionesPremier(date);
@@ -1353,7 +1353,7 @@ app.get("/premier/alineaciones", authMiddleware, async (req, res) => {
   }
 });
 
-app.get("/laliga/alineaciones", authMiddleware, async (req, res) => {
+app.get("/laliga/alineaciones", async (req, res) => {
   try {
     const date = req.query.date || null;
     const data = await scrapAlineacionesLaLiga(date);
@@ -1367,7 +1367,7 @@ app.get("/laliga/alineaciones", authMiddleware, async (req, res) => {
   }
 });
 
-app.get("/seriea/alineaciones", authMiddleware, async (req, res) => {
+app.get("/seriea/alineaciones", async (req, res) => {
   try {
     const date = req.query.date || null;
     const data = await scrapAlineacionesSerieA(date);
@@ -1381,7 +1381,7 @@ app.get("/seriea/alineaciones", authMiddleware, async (req, res) => {
   }
 });
 
-app.get("/bundesliga/alineaciones", authMiddleware, async (req, res) => {
+app.get("/bundesliga/alineaciones", async (req, res) => {
   try {
     const date = req.query.date || null;
     const data = await scrapAlineacionesBundesliga(date);
@@ -1395,7 +1395,7 @@ app.get("/bundesliga/alineaciones", authMiddleware, async (req, res) => {
   }
 });
 
-app.get("/ligue1/alineaciones", authMiddleware, async (req, res) => {
+app.get("/ligue1/alineaciones", async (req, res) => {
   try {
     const date = req.query.date || null;
     const data = await scrapAlineacionesLigue1(date);
@@ -1409,7 +1409,7 @@ app.get("/ligue1/alineaciones", authMiddleware, async (req, res) => {
   }
 });
 
-app.get("/alineaciones/todas-las-ligas", authMiddleware, async (req, res) => {
+app.get("/alineaciones/todas-las-ligas", async (req, res) => {
   try {
     const date = req.query.date || null;
     const data = await scrapAlineacionesTodasLasLigas(date);
@@ -1423,7 +1423,7 @@ app.get("/alineaciones/todas-las-ligas", authMiddleware, async (req, res) => {
   }
 });
 
-app.get("/alineaciones/partido/:eventId", authMiddleware, async (req, res) => {
+app.get("/alineaciones/partido/:eventId", async (req, res) => {
   try {
     const eventId = req.params.eventId;
     const data = await scrapAlineacionPartido(eventId);
@@ -1437,7 +1437,7 @@ app.get("/alineaciones/partido/:eventId", authMiddleware, async (req, res) => {
   }
 });
 
-app.get("/alineaciones/stats", authMiddleware, async (req, res) => {
+app.get("/alineaciones/stats", async (req, res) => {
   try {
     const stats = getPhotoStats();
     res.json({
@@ -1472,7 +1472,7 @@ app.get("/alineaciones/stats", authMiddleware, async (req, res) => {
   }
 });
 
-app.get("/notificaciones", authMiddleware, async (req, res) => {
+app.get("/notificaciones", async (req, res) => {
   try {
     console.log("🔔 Generando notificaciones de todas las ligas...");
     const notificaciones = generarNotificaciones('todas');
@@ -1497,7 +1497,7 @@ app.get("/notificaciones", authMiddleware, async (req, res) => {
   }
 });
 
-app.get("/notificaciones/stats", authMiddleware, async (req, res) => {
+app.get("/notificaciones/stats", async (req, res) => {
   try {
     console.log("📊 Generando estadísticas de notificaciones...");
     const stats = obtenerEstadisticasNotificaciones();
@@ -1520,7 +1520,7 @@ app.get("/notificaciones/stats", authMiddleware, async (req, res) => {
   }
 });
 
-app.get("/notificaciones/:liga", authMiddleware, async (req, res) => {
+app.get("/notificaciones/:liga", async (req, res) => {
   try {
     const liga = req.params.liga.toLowerCase();
     const ligasValidas = ['ligamx', 'premier', 'laliga', 'seriea', 'bundesliga', 'ligue1'];
@@ -1566,7 +1566,7 @@ app.get("/notificaciones/:liga", authMiddleware, async (req, res) => {
   }
 });
 
-app.get("/getStreamUrl", authMiddleware, async (req, res) => {
+app.get("/getStreamUrl", async (req, res) => {
   try {
     const targetUrl = req.query.url;
     
@@ -1620,7 +1620,7 @@ app.get("/getStreamUrl", authMiddleware, async (req, res) => {
   }
 });
 
-app.get("/proxyStream", authMiddleware, async (req, res) => {
+app.get("/proxyStream", async (req, res) => {
   try {
     const targetUrl = req.query.url;
     
