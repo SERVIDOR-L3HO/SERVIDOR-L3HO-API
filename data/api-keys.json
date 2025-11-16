@@ -1,0 +1,10 @@
+{
+  "lmx_4b371d3bf055c5a12f9b14806fef2362e444e098ff85bfe117f3d1481efd93a6": {
+    "clientName": "Cliente de Prueba",
+    "description": "API key para testing",
+    "createdAt": "2025-11-16T21:37:43.142Z",
+    "active": true,
+    "requestCount": 3,
+    "lastUsed": "2025-11-16T21:38:03.337Z"
+  }
+}

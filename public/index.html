@@ -53,6 +53,63 @@
             </div>
         </section>
 
+        <section class="api-section auth-section">
+            <h2 class="section-title">🔐 Autenticación Requerida</h2>
+            
+            <div class="auth-card">
+                <h3>Cómo Usar la API</h3>
+                <p class="auth-description">
+                    Esta API requiere autenticación mediante API key para todos los endpoints de datos. 
+                    Para obtener acceso, contacte con el proveedor.
+                </p>
+                
+                <div class="auth-methods">
+                    <div class="auth-method">
+                        <h4>Opción 1: Header HTTP (Recomendado)</h4>
+                        <div class="code-small">
+                            <pre><code>GET /tabla HTTP/1.1
+Host: tu-dominio.com
+X-API-Key: lmx_tu_api_key_aqui</code></pre>
+                        </div>
+                    </div>
+                    
+                    <div class="auth-method">
+                        <h4>Opción 2: Parámetro de Query</h4>
+                        <div class="code-small">
+                            <pre><code>GET /tabla?apikey=lmx_tu_api_key_aqui</code></pre>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="auth-examples">
+                    <h4>Ejemplos de Uso</h4>
+                    <div class="code-small">
+                        <pre><code>// JavaScript con fetch
+fetch('https://tu-dominio.com/tabla', {
+  headers: {
+    'X-API-Key': 'lmx_tu_api_key_aqui'
+  }
+})
+.then(response => response.json())
+.then(data => console.log(data));
+
+// cURL
+curl -H "X-API-Key: lmx_tu_api_key_aqui" https://tu-dominio.com/tabla
+
+// Python con requests
+import requests
+headers = {'X-API-Key': 'lmx_tu_api_key_aqui'}
+response = requests.get('https://tu-dominio.com/tabla', headers=headers)
+data = response.json()</code></pre>
+                    </div>
+                </div>
+                
+                <div class="auth-contact">
+                    <p><strong>📧 Para obtener una API key:</strong> Contacte a <a href="mailto:servidorl3ho@gmail.com">servidorl3ho@gmail.com</a></p>
+                </div>
+            </div>
+        </section>
+
         <section class="api-section">
             <h2 class="section-title">Ligas Disponibles</h2>
             

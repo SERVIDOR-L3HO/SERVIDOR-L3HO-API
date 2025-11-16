@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Multi-League Football API</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .admin-container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+        .admin-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+        }
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        .btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: transform 0.2s ease;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+        .btn-danger {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            display: none;
+        }
+        .result.success {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+        }
+        .result.error {
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+        }
+        .api-key-display {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            word-break: break-all;
+            margin-top: 10px;
+        }
+        .keys-list {
+            max-height: 500px;
+            overflow-y: auto;
+        }
+        .key-item {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            border-left: 4px solid #667eea;
+        }
+        .key-item.inactive {
+            border-left-color: #dc3545;
+            opacity: 0.6;
+        }
+        .key-item h4 {
+            margin: 0 0 8px 0;
+            color: #333;
+        }
+        .key-item p {
+            margin: 4px 0;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        .key-item code {
+            background: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-container">
+        <header class="header" style="margin-bottom: 30px;">
+            <h1 class="logo">🔑 Admin Panel</h1>
+            <p class="subtitle">Gestión de API Keys</p>
+        </header>
+
+        <div class="admin-card">
+            <h2>Crear Nueva API Key</h2>
+            <form id="createKeyForm">
+                <div class="form-group">
+                    <label for="adminPassword">Contraseña de Administrador *</label>
+                    <input type="password" id="adminPassword" required>
+                </div>
+                <div class="form-group">
+                    <label for="clientName">Nombre del Cliente *</label>
+                    <input type="text" id="clientName" placeholder="Ej: Juan Pérez" required>
+                </div>
+                <div class="form-group">
+                    <label for="description">Descripción (Opcional)</label>
+                    <textarea id="description" rows="3" placeholder="Ej: Plan Premium - Acceso ilimitado"></textarea>
+                </div>
+                <button type="submit" class="btn">Crear API Key</button>
+            </form>
+            <div id="createResult" class="result"></div>
+        </div>
+
+        <div class="admin-card">
+            <h2>Ver Todas las API Keys</h2>
+            <div class="form-group">
+                <label for="viewPassword">Contraseña de Administrador</label>
+                <input type="password" id="viewPassword">
+            </div>
+            <button onclick="loadKeys()" class="btn">Cargar Keys</button>
+            <div id="statsDisplay" style="margin-top: 20px; display: none;">
+                <h3>Estadísticas</h3>
+                <p><strong>Total de Keys:</strong> <span id="totalKeys">0</span></p>
+                <p><strong>Keys Activas:</strong> <span id="activeKeys">0</span></p>
+                <p><strong>Keys Inactivas:</strong> <span id="inactiveKeys">0</span></p>
+                <p><strong>Total de Requests:</strong> <span id="totalRequests">0</span></p>
+            </div>
+            <div id="keysDisplay" class="keys-list" style="margin-top: 20px;"></div>
+        </div>
+
+        <div class="admin-card">
+            <h2>Desactivar API Key</h2>
+            <form id="deactivateKeyForm">
+                <div class="form-group">
+                    <label for="deactivatePassword">Contraseña de Administrador</label>
+                    <input type="password" id="deactivatePassword" required>
+                </div>
+                <div class="form-group">
+                    <label for="keyToDeactivate">API Key a Desactivar</label>
+                    <input type="text" id="keyToDeactivate" placeholder="lmx_..." required>
+                </div>
+                <button type="submit" class="btn btn-danger">Desactivar Key</button>
+            </form>
+            <div id="deactivateResult" class="result"></div>
+        </div>
+    </div>
+
+    <script>
+        const API_URL = window.location.origin;
+
+        document.getElementById('createKeyForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const resultDiv = document.getElementById('createResult');
+            const adminPassword = document.getElementById('adminPassword').value;
+            const clientName = document.getElementById('clientName').value;
+            const description = document.getElementById('description').value;
+            
+            try {
+                const response = await fetch(`${API_URL}/admin/create-key`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        adminPassword,
+                        clientName,
+                        description
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    resultDiv.className = 'result success';
+                    resultDiv.style.display = 'block';
+                    resultDiv.innerHTML = `
+                        <h3>✅ API Key creada exitosamente</h3>
+                        <p><strong>Cliente:</strong> ${data.clientName}</p>
+                        <p><strong>API Key:</strong></p>
+                        <div class="api-key-display">${data.apiKey}</div>
+                        <p style="margin-top: 10px; color: #856404; background: #fff3cd; padding: 10px; border-radius: 5px;">
+                            ⚠️ <strong>Importante:</strong> Guarde esta key de forma segura. No se podrá recuperar más tarde.
+                        </p>
+                    `;
+                    document.getElementById('createKeyForm').reset();
+                } else {
+                    resultDiv.className = 'result error';
+                    resultDiv.style.display = 'block';
+                    resultDiv.innerHTML = `<strong>Error:</strong> ${data.error}`;
+                }
+            } catch (error) {
+                resultDiv.className = 'result error';
+                resultDiv.style.display = 'block';
+                resultDiv.innerHTML = `<strong>Error:</strong> ${error.message}`;
+            }
+        });
+
+        async function loadKeys() {
+            const password = document.getElementById('viewPassword').value;
+            const keysDisplay = document.getElementById('keysDisplay');
+            const statsDisplay = document.getElementById('statsDisplay');
+            
+            if (!password) {
+                alert('Por favor ingrese la contraseña de administrador');
+                return;
+            }
+            
+            try {
+                const response = await fetch(`${API_URL}/admin/keys?adminPassword=${encodeURIComponent(password)}`);
+                const data = await response.json();
+                
+                if (response.ok) {
+                    const stats = data.stats;
+                    document.getElementById('totalKeys').textContent = stats.totalKeys;
+                    document.getElementById('activeKeys').textContent = stats.activeKeys;
+                    document.getElementById('inactiveKeys').textContent = stats.inactiveKeys;
+                    document.getElementById('totalRequests').textContent = stats.totalRequests;
+                    statsDisplay.style.display = 'block';
+                    
+                    const keys = data.keys;
+                    let html = '<h3>API Keys</h3>';
+                    
+                    for (const [apiKey, info] of Object.entries(keys)) {
+                        const activeClass = info.active ? '' : ' inactive';
+                        const statusBadge = info.active ? '🟢 Activa' : '🔴 Inactiva';
+                        html += `
+                            <div class="key-item${activeClass}">
+                                <h4>${info.clientName} ${statusBadge}</h4>
+                                <p><strong>Key:</strong> <code>${apiKey}</code></p>
+                                <p><strong>Descripción:</strong> ${info.description || 'N/A'}</p>
+                                <p><strong>Creada:</strong> ${new Date(info.createdAt).toLocaleString('es-MX')}</p>
+                                <p><strong>Último uso:</strong> ${info.lastUsed ? new Date(info.lastUsed).toLocaleString('es-MX') : 'Nunca'}</p>
+                                <p><strong>Requests totales:</strong> ${info.requestCount}</p>
+                            </div>
+                        `;
+                    }
+                    
+                    keysDisplay.innerHTML = html;
+                } else {
+                    alert('Error: ' + data.error);
+                }
+            } catch (error) {
+                alert('Error: ' + error.message);
+            }
+        }
+
+        document.getElementById('deactivateKeyForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const resultDiv = document.getElementById('deactivateResult');
+            const adminPassword = document.getElementById('deactivatePassword').value;
+            const apiKey = document.getElementById('keyToDeactivate').value;
+            
+            if (!confirm(`¿Está seguro de que desea desactivar la key: ${apiKey}?`)) {
+                return;
+            }
+            
+            try {
+                const response = await fetch(`${API_URL}/admin/deactivate-key`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        adminPassword,
+                        apiKey
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    resultDiv.className = 'result success';
+                    resultDiv.style.display = 'block';
+                    resultDiv.innerHTML = `<strong>✅ ${data.message}</strong>`;
+                    document.getElementById('deactivateKeyForm').reset();
+                } else {
+                    resultDiv.className = 'result error';
+                    resultDiv.style.display = 'block';
+                    resultDiv.innerHTML = `<strong>Error:</strong> ${data.error}`;
+                }
+            } catch (error) {
+                resultDiv.className = 'result error';
+                resultDiv.style.display = 'block';
+                resultDiv.innerHTML = `<strong>Error:</strong> ${error.message}`;
+            }
+        });
+    </script>
+</body>
+</html>
