@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-League Football API - Documentación</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <h1 class="logo">⚽ Multi-League Football API</h1>
+                <div class="version-badge">v3.4.0</div>
+            </div>
+            <p class="subtitle">API Profesional de Fútbol con Datos en Tiempo Real</p>
+            <div class="status-bar">
+                <span class="status-item status-active">
+                    <span class="status-dot"></span>
+                    Estado: Activo
+                </span>
+                <span class="status-item">
+                    <span class="update-icon">🔄</span>
+                    Actualización: Cada 20 minutos
+                </span>
+            </div>
+        </header>
+
+        <section class="features">
+            <h2 class="section-title">Características Principales</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Tiempo Real</h3>
+                    <p>Marcadores y datos actualizados automáticamente</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔔</div>
+                    <h3>Notificaciones Inteligentes</h3>
+                    <p>Detección automática de goles, inicio de partidos y eventos</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌍</div>
+                    <h3>6 Ligas Principales</h3>
+                    <p>Liga MX, Premier League, La Liga, Serie A, Bundesliga, Ligue 1</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Datos Completos</h3>
+                    <p>Tablas, goleadores, calendarios, noticias y alineaciones</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="api-section">
+            <h2 class="section-title">Ligas Disponibles</h2>
+            
+            <div class="league-card">
+                <div class="league-header">
+                    <h3>🇲🇽 Liga MX</h3>
+                    <span class="league-badge">México</span>
+                </div>
+                <div class="endpoints">
+                    <div class="endpoint">
+                        <span class="method">GET</span>
+                        <code>/tabla</code>
+                        <span class="description">Tabla de posiciones</span>
+                    </div>
+                    <div class="endpoint">
+                        <span class="method">GET</span>
+                        <code>/noticias</code>
+                        <span class="description">Últimas noticias</span>
+                    </div>
+                    <div class="endpoint">
+                        <span class="method">GET</span>
+                        <code>/goleadores</code>
+                        <span class="description">Máximos goleadores</span>
+                    </div>
+                    <div class="endpoint">
+                        <span class="method">GET</span>
+                        <code>/equipos</code>
+                        <span class="description">Información de equipos</span>
+                    </div>
+                    <div class="endpoint">
+                        <span class="method">GET</span>
+                        <code>/logos</code>
+                        <span class="description">Logos de equipos</span>
+                    </div>
+                    <div class="endpoint">
+                        <span class="method">GET</span>
+                        <code>/videos</code>
+                        <span class="description">Videos de YouTube</span>
+                    </div>
+                    <div class="endpoint">
+                        <span class="method">GET</span>
+                        <code>/calendario</code>
+                        <span class="description">Calendario de partidos</span>
+                    </div>
+                    <div class="endpoint new">
+                        <span class="method">GET</span>
+                        <code>/marcadores</code>
+                        <span class="description">Marcadores en vivo</span>
+                        <span class="badge-new">NUEVO</span>
+                    </div>
+                    <div class="endpoint new">
+                        <span class="method">GET</span>
+                        <code>/alineaciones</code>
+                        <span class="description">Alineaciones con fotos</span>
+                        <span class="badge-new">NUEVO</span>
+                    </div>
+                    <div class="endpoint">
+                        <span class="method">GET</span>
+                        <code>/todo</code>
+                        <span class="description">Todos los datos combinados</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="league-card">
+                <div class="league-header">
+                    <h3>🏴󠁧󠁢󠁥󠁮󠁧󠁿 Premier League</h3>
+                    <span class="league-badge">Inglaterra</span>
+                </div>
+                <div class="endpoints">
+                    <div class="endpoint">
+                        <span class="method">GET</span>
+                        <code>/premier/tabla</code>
+                        <span class="description">Tabla de posiciones</span>
+                    </div>
+                    <div class="endpoint">
+                        <span class="method">GET</span>
+                        <code>/premier/noticias</code>
+                        <span class="description">Últimas noticias</span>
+                    </div>
+                    <div class="endpoint">
+                        <span class="method">GET</span>
+                        <code>/premier/goleadores</code>
+                        <span class="description">Máximos goleadores</span>
+                    </div>
+                    <div class="endpoint">
+                        <span class="method">GET</span>
+                        <code>/premier/calendario</code>
+                        <span class="description">Calendario de partidos</span>
+                    </div>
+                    <div class="endpoint new">
+                        <span class="method">GET</span>
+                        <code>/premier/marcadores</code>
+                        <span class="description">Marcadores en vivo</span>
+                        <span class="badge-new">NUEVO</span>
+                    </div>
+                    <div class="endpoint new">
+                        <span class="method">GET</span>
+                        <code>/premier/alineaciones</code>
+                        <span class="description">Alineaciones</span>
+                        <span class="badge-new">NUEVO</span>
+                    </div>
+                    <div class="endpoint">
+                        <span class="method">GET</span>
+                        <code>/premier/mejores-momentos</code>
+                        <span class="description">Mejores momentos</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="league-card">
+                <div class="league-header">
+                    <h3>🇪🇸 La Liga</h3>
+                    <span class="league-badge">España</span>
+                </div>
+                <div class="endpoints">
+                    <div class="endpoint">
+                        <span class="method">GET</span>
+                        <code>/laliga/tabla</code>
+                        <span class="description">Tabla de posiciones</span>
+                    </div>
+                    <div class="endpoint">
+                        <span class="method">GET</span>
+                        <code>/laliga/noticias</code>
+                        <span class="description">Últimas noticias</span>
+                    </div>
+                    <div class="endpoint">
+                        <span class="method">GET</span>
+                        <code>/laliga/goleadores</code>
+                        <span class="description">Máximos goleadores</span>
+                    </div>
+                    <div class="endpoint">
+                        <span class="method">GET</span>
+                        <code>/laliga/calendario</code>
+                        <span class="description">Calendario de partidos</span>
+                    </div>
+                    <div class="endpoint new">
+                        <span class="method">GET</span>
+                        <code>/laliga/marcadores</code>
+                        <span class="description">Marcadores en vivo</span>
+                        <span class="badge-new">NUEVO</span>
+                    </div>
+                    <div class="endpoint new">
+                        <span class="method">GET</span>
+                        <code>/laliga/alineaciones</code>
+                        <span class="description">Alineaciones</span>
+                        <span class="badge-new">NUEVO</span>
+                    </div>
+                    <div class="endpoint">
+                        <span class="method">GET</span>
+                        <code>/laliga/mejores-momentos</code>
+                        <span class="description">Mejores momentos</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="league-card">
+                <div class="league-header">
+                    <h3>🇮🇹 Serie A</h3>
+                    <span class="league-badge">Italia</span>
+                </div>
+                <div class="endpoints">
+                    <div class="endpoint">
+                        <span class="method">GET</span>
+                        <code>/seriea/tabla</code>
+                        <span class="description">Tabla de posiciones</span>
+                    </div>
+                    <div class="endpoint">
+                        <span class="method">GET</span>
+                        <code>/seriea/noticias</code>
+                        <span class="description">Últimas noticias</span>
+                    </div>
+                    <div class="endpoint">
+                        <span class="method">GET</span>
+                        <code>/seriea/goleadores</code>
+                        <span class="description">Máximos goleadores</span>
+                    </div>
+                    <div class="endpoint">
+                        <span class="method">GET</span>
+                        <code>/seriea/calendario</code>
+                        <span class="description">Calendario de partidos</span>
+                    </div>
+                    <div class="endpoint new">
+                        <span class="method">GET</span>
+                        <code>/seriea/marcadores</code>
+                        <span class="description">Marcadores en vivo</span>
+                        <span class="badge-new">NUEVO</span>
+                    </div>
+                    <div class="endpoint new">
+                        <span class="method">GET</span>
+                        <code>/seriea/alineaciones</code>
+                        <span class="description">Alineaciones</span>
+                        <span class="badge-new">NUEVO</span>
+                    </div>
+                    <div class="endpoint">
+                        <span class="method">GET</span>
+                        <code>/seriea/mejores-momentos</code>
+                        <span class="description">Mejores momentos</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="league-card">
+                <div class="league-header">
+                    <h3>🇩🇪 Bundesliga</h3>
+                    <span class="league-badge">Alemania</span>
+                </div>
+                <div class="endpoints">
+                    <div class="endpoint">
+                        <span class="method">GET</span>
+                        <code>/bundesliga/tabla</code>
+                        <span class="description">Tabla de posiciones</span>
+                    </div>
+                    <div class="endpoint">
+                        <span class="method">GET</span>
+                        <code>/bundesliga/noticias</code>
+                        <span class="description">Últimas noticias</span>
+                    </div>
+                    <div class="endpoint">
+                        <span class="method">GET</span>
+                        <code>/bundesliga/goleadores</code>
+                        <span class="description">Máximos goleadores</span>
+                    </div>
+                    <div class="endpoint">
+                        <span class="method">GET</span>
+                        <code>/bundesliga/calendario</code>
+                        <span class="description">Calendario de partidos</span>
+                    </div>
+                    <div class="endpoint new">
+                        <span class="method">GET</span>
+                        <code>/bundesliga/marcadores</code>
+                        <span class="description">Marcadores en vivo</span>
+                        <span class="badge-new">NUEVO</span>
+                    </div>
+                    <div class="endpoint new">
+                        <span class="method">GET</span>
+                        <code>/bundesliga/alineaciones</code>
+                        <span class="description">Alineaciones</span>
+                        <span class="badge-new">NUEVO</span>
+                    </div>
+                    <div class="endpoint">
+                        <span class="method">GET</span>
+                        <code>/bundesliga/mejores-momentos</code>
+                        <span class="description">Mejores momentos</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="league-card">
+                <div class="league-header">
+                    <h3>🇫🇷 Ligue 1</h3>
+                    <span class="league-badge">Francia</span>
+                </div>
+                <div class="endpoints">
+                    <div class="endpoint">
+                        <span class="method">GET</span>
+                        <code>/ligue1/tabla</code>
+                        <span class="description">Tabla de posiciones</span>
+                    </div>
+                    <div class="endpoint">
+                        <span class="method">GET</span>
+                        <code>/ligue1/noticias</code>
+                        <span class="description">Últimas noticias</span>
+                    </div>
+                    <div class="endpoint">
+                        <span class="method">GET</span>
+                        <code>/ligue1/goleadores</code>
+                        <span class="description">Máximos goleadores</span>
+                    </div>
+                    <div class="endpoint">
+                        <span class="method">GET</span>
+                        <code>/ligue1/calendario</code>
+                        <span class="description">Calendario de partidos</span>
+                    </div>
+                    <div class="endpoint new">
+                        <span class="method">GET</span>
+                        <code>/ligue1/marcadores</code>
+                        <span class="description">Marcadores en vivo</span>
+                        <span class="badge-new">NUEVO</span>
+                    </div>
+                    <div class="endpoint new">
+                        <span class="method">GET</span>
+                        <code>/ligue1/alineaciones</code>
+                        <span class="description">Alineaciones</span>
+                        <span class="badge-new">NUEVO</span>
+                    </div>
+                    <div class="endpoint">
+                        <span class="method">GET</span>
+                        <code>/ligue1/mejores-momentos</code>
+                        <span class="description">Mejores momentos</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="api-section">
+            <h2 class="section-title">Endpoints Especiales</h2>
+            
+            <div class="special-card">
+                <h3>📡 Todas las Ligas</h3>
+                <div class="endpoints">
+                    <div class="endpoint">
+                        <span class="method">GET</span>
+                        <code>/calendario/todas-las-ligas</code>
+                        <span class="description">Calendario completo de todas las ligas</span>
+                    </div>
+                    <div class="endpoint">
+                        <span class="method">GET</span>
+                        <code>/marcadores/todas-las-ligas</code>
+                        <span class="description">Marcadores de todas las ligas</span>
+                    </div>
+                    <div class="endpoint">
+                        <span class="method">GET</span>
+                        <code>/alineaciones/todas-las-ligas</code>
+                        <span class="description">Alineaciones completas multi-fuente</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="special-card">
+                <h3>🔔 Sistema de Notificaciones</h3>
+                <p class="card-description">Sistema inteligente que detecta goles en tiempo real, inicio de partidos, fin del primer tiempo y alertas de partidos próximos.</p>
+                <div class="endpoints">
+                    <div class="endpoint">
+                        <span class="method">GET</span>
+                        <code>/notificaciones</code>
+                        <span class="description">Todas las notificaciones</span>
+                    </div>
+                    <div class="endpoint">
+                        <span class="method">GET</span>
+                        <code>/notificaciones/:liga</code>
+                        <span class="description">Notificaciones por liga</span>
+                    </div>
+                    <div class="endpoint">
+                        <span class="method">GET</span>
+                        <code>/notificaciones/stats</code>
+                        <span class="description">Estadísticas del sistema</span>
+                    </div>
+                </div>
+                <div class="notification-features">
+                    <span class="feature-tag">⚽ Detección de Goles</span>
+                    <span class="feature-tag">🏁 Inicio de Partido</span>
+                    <span class="feature-tag">⏸️ Fin Primer Tiempo</span>
+                    <span class="feature-tag">⏰ Alertas Anticipadas</span>
+                </div>
+            </div>
+
+            <div class="special-card">
+                <h3>📺 Transmisiones Deportivas</h3>
+                <div class="endpoints">
+                    <div class="endpoint">
+                        <span class="method">GET</span>
+                        <code>/transmisiones</code>
+                        <span class="description">Transmisiones en vivo con fechas y canales</span>
+                    </div>
+                    <div class="endpoint">
+                        <span class="method">GET</span>
+                        <code>/transmisiones2</code>
+                        <span class="description">Transmisiones completas de todos los deportes</span>
+                    </div>
+                    <div class="endpoint">
+                        <span class="method">GET</span>
+                        <code>/transmisiones3</code>
+                        <span class="description">Fuente alternativa con múltiples deportes</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="special-card">
+                <h3>🎯 Alineaciones Específicas</h3>
+                <div class="endpoints">
+                    <div class="endpoint">
+                        <span class="method">GET</span>
+                        <code>/alineaciones/partido/:eventId</code>
+                        <span class="description">Alineación de un partido específico</span>
+                    </div>
+                    <div class="endpoint">
+                        <span class="method">GET</span>
+                        <code>/alineaciones/stats</code>
+                        <span class="description">Métricas del sistema de alineaciones</span>
+                    </div>
+                </div>
+                <div class="example-box">
+                    <strong>Ejemplo:</strong> <code>/alineaciones/partido/12345</code>
+                    <p>Incluye fotos de jugadores, posiciones, números de camiseta, formación táctica, titulares y suplentes</p>
+                </div>
+            </div>
+
+            <div class="special-card">
+                <h3>🎥 Streaming y Proxy</h3>
+                <div class="endpoints">
+                    <div class="endpoint">
+                        <span class="method">GET</span>
+                        <code>/getStreamUrl?url=...</code>
+                        <span class="description">Extrae URL de reproductor de video</span>
+                    </div>
+                    <div class="endpoint">
+                        <span class="method">GET</span>
+                        <code>/proxyStream?url=...</code>
+                        <span class="description">Proxy limpiador de HTML para streams</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="special-card">
+                <h3>📅 Parámetros Adicionales</h3>
+                <div class="example-box">
+                    <strong>Fecha específica para marcadores:</strong>
+                    <code>/marcadores?date=YYYYMMDD</code>
+                    <p>Ejemplo: <code>/marcadores?date=20251021</code></p>
+                </div>
+            </div>
+        </section>
+
+        <section class="api-section">
+            <h2 class="section-title">Información Técnica</h2>
+            <div class="tech-grid">
+                <div class="tech-card">
+                    <h4>Formato de Respuesta</h4>
+                    <p>Todas las respuestas son en formato JSON</p>
+                </div>
+                <div class="tech-card">
+                    <h4>CORS</h4>
+                    <p>Habilitado para todas las solicitudes</p>
+                </div>
+                <div class="tech-card">
+                    <h4>Caché</h4>
+                    <p>Sistema de caché inteligente para optimización</p>
+                </div>
+                <div class="tech-card">
+                    <h4>Actualización</h4>
+                    <p>Datos actualizados automáticamente cada 20 minutos</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="api-section">
+            <h2 class="section-title">Ejemplo de Uso</h2>
+            <div class="code-block">
+                <pre><code>// Obtener tabla de posiciones de Liga MX
+fetch('https://tu-dominio.com/tabla')
+  .then(response => response.json())
+  .then(data => console.log(data));
+
+// Obtener marcadores en vivo de Premier League
+fetch('https://tu-dominio.com/premier/marcadores')
+  .then(response => response.json())
+  .then(data => console.log(data));
+
+// Obtener notificaciones de todas las ligas
+fetch('https://tu-dominio.com/notificaciones')
+  .then(response => response.json())
+  .then(data => console.log(data));</code></pre>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>Multi-League Football API v3.4.0 | Desarrollado profesionalmente para aplicaciones en producción</p>
+            <p class="footer-note">📧 Para soporte y consultas comerciales, contacte con el proveedor de la API</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const endpoints = document.querySelectorAll('.endpoint code');
+            endpoints.forEach(endpoint => {
+                endpoint.addEventListener('click', function() {
+                    const url = window.location.origin + this.textContent;
+                    navigator.clipboard.writeText(url).then(() => {
+                        const tooltip = document.createElement('div');
+                        tooltip.className = 'tooltip';
+                        tooltip.textContent = '¡Copiado!';
+                        this.parentElement.appendChild(tooltip);
+                        setTimeout(() => tooltip.remove(), 2000);
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

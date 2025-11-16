@@ -76,6 +76,7 @@ const {
 const app = express();
 
 app.use(cors());
+app.use(express.static('public'));
 
 async function updateAllData() {
   console.log("🔄 Actualizando datos de Liga MX...");
@@ -162,7 +163,7 @@ async function updateMarcadores() {
   }
 }
 
-app.get("/", (req, res) => {
+app.get("/api/docs", (req, res) => {
   res.json({
     nombre: "Multi-League Football API",
     version: "3.4.0",
